@@ -4,8 +4,8 @@ B=c(365.36, 366.90, 370.27, 366.31, 367.52, 366.91, 372.12, 363.61, 364.00, 355.
     358.84, 372.48, 364.01, 360.86)
 mean(A);sd(A)
 mean(B);sd(B)
-
+#
 t.test(A,B,conf.level=0.98)
-
+#
 #equal variance assumption
 t.test(A,B,conf.level=0.98,var.equal = TRUE)
