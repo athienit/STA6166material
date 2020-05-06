@@ -24,6 +24,9 @@ ggplot(data=data.frame(frac), aes(frac)) +
 
 #make non-fancy boxplot
 boxplot(frac,horizontal=TRUE,xlab="Fracture stress")
+points(frac,add=T)
 
 #make fancy boxplot
-ggplot2.boxplot(data=frac)
+ggplot(data=data.frame(frac), aes(x=1, y=frac)) +
+  geom_boxplot() +
+  geom_jitter(width=0.25, alpha=0.5)
