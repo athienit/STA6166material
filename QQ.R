@@ -13,6 +13,8 @@ legend(150,0.015,c("Normal","Data"),col=1:2,lty=1:2,bg="gray90")
 ### fancier version using ggplot2
 ## QQ plot
 library(qqplotr)
+library(gridExtra)
+
 smp=data.frame(norm=lead)
 gg <- ggplot(data = smp, mapping = aes(sample = norm)) +
   stat_qq_band() +
@@ -42,7 +44,7 @@ opa=g + scale_y_continuous("Counts", breaks = round(ybreaks / (bw * n_obs),3), l
 opa=g + scale_y_continuous("Density", sec.axis = sec_axis(
   trans = ~ . * bw * n_obs, name = "Counts", breaks = ybreaks))
 opa
-library(gridExtra)
+
 grid.arrange(gg, opa, ncol=2,nrow=1,top="Assesing normality of data")
 
 ### Some frequentist tests
