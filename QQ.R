@@ -49,3 +49,5 @@ grid.arrange(gg, opa, ncol=2,nrow=1,top="Assesing normality of data")
 
 ### Some frequentist tests
 shapiro.test(lead)
+ks.test(x=lead,y=pnorm)
+
