@@ -7,7 +7,8 @@ T=sum(rank(c(placebo,alcohol))[1:length(placebo)]);T
 #check assumption that centered data have the same distribution
 pcenter=placebo-mean(placebo)
 acenter=alcohol-mean(alcohol)
-qqplot(pcenter,acenter)
+qqplot(pcenter,acenter,main="QQ plot of centered data",ylab="Centered alcohol quantiles",xlab="Centered placebo quantiles")
+abline(c(0,1))
 ks.test(pcenter,acenter)
 
 wilcox.test(placebo,alcohol,conf.int=TRUE)
