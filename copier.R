@@ -1,4 +1,4 @@
-copier=read.csv("C:/Users/demetris/OneDrive - University of Florida/Teaching/STA 6166/STA6166material/copiers.csv",skip=1,header=TRUE)
+copier=read.csv("https://github.com/athienit/STA6166material/copiers.csv",skip=1,header=TRUE)
 plot(copier$Copiers,copier$Time,pch=16,xlab="Quantity",ylab="Time (in minutes)",main="Scatterplot")
 
 reg=lm(Time~Copiers,data=copier)

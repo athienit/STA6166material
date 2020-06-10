@@ -1,4 +1,6 @@
-dat=read.table("T:/Teaching/STA 6166/Class Notes/wordrecall.txt",header=TRUE)
+time=c(1,5,15,30,60,120,240,480,720,1440,2880,5760,10080)
+prop=c(0.84,0.71,0.61,0.56,0.54,0.47,0.45,0.38,0.36,0.26,0.20,0.16,0.08)
+data=data.frame(prop,time)
 reg=lm(prop~time,data=dat)
 plot(prop~time,data=dat)
 abline(reg)

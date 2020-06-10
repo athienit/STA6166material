@@ -1,4 +1,4 @@
-copier=read.csv("http://www.stat.ufl.edu/~athienit/STA6166/copiers.csv",skip=1,header=TRUE)
+copier=read.csv("https://github.com/athienit/STA6166material/copiers.csv",skip=1,header=TRUE)
 x=copier$Copiers
 y=copier$Time
 

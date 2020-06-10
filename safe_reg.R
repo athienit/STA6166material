@@ -1,4 +1,4 @@
-dat=read.csv("C:/Users/demetris/OneDrive - University of Florida/Teaching/STA 6166/STA6166material/safe_reg.csv",header=TRUE)
+dat=read.csv("https://github.com/athienit/STA6166material/safe_reg.csv",header=TRUE)
 attach(dat)
 
 library(car)
