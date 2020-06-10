@@ -14,3 +14,15 @@ points(c(1,2),tapply(drug$potency,drug$method,mean),col=2,pch=8)
 abline(h=mean(drug$potency),col=3)
 legend(1.8,10.7, c("Observations","Trt Mean","Grand Mean"), col = c(1,2,3), text.col= "black",
        lty=c(0,0,1),pch=c(1,8,NA),bg='gray90')
+
+library(ggplot2)
+library(Hmisc)
+ggplot(drug)+
+  geom_dotplot(binaxis='y', stackdir='center')+
+  stat_summary(fun.data=mean_sdl, mult=2, 
+               geom="pointrange", color="red")
+
+ggplot(drug, aes(x=method,y=potency))+
+  geom_dotplot(binaxis='y', stackdir='center')+
+  stat_summary(fun.data=mean_sdl, mult=2, 
+               geom="pointrange", color="red")
