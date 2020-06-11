@@ -50,5 +50,5 @@ newdata=data.frame(pH=4.15,Na=10000)
 predict(linthurst.model.r, newdata, interval="prediction",level=0.95)
 
 # Next one should check the assumptions
-source("http://www.stat.ufl.edu/~athienit/check.R")
+source("https://github.com/athienit/STA6166material/check.R")
 check(linthurst.model.r,tests=TRUE)

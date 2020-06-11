@@ -45,7 +45,7 @@ summary.lm(m1) #fit as a regression
 
 ########### DIFFERENCES IN MEANS
 # Bonferroni method for CRD and RBD models (all pairwise comparisons)
-source("http://users.stat.ufl.edu/~athienit/Bonf.R")
+source("https://github.com/athienit/STA6166material/Bonf.R")
 Bonf(strength~treat,data=alloy)
 
 #### Obtain Tukey's Comparisons among levels of treatment
@@ -59,5 +59,5 @@ mtext("Tukey Honest Significant Differences",side=3,line=0.5)
 qt(0.975,16)*sqrt(MSE*(1/5+1/5))
 
 # Do assumptions hold?
-source("http://users.stat.ufl.edu/~athienit/check.R")
+source("https://github.com/athienit/STA6166material/check.R")
 check(m1)
