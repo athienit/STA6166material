@@ -1,6 +1,6 @@
 #Linthurst Data: Spartina Biomass
 
-linthurst <- read.table("https://github.com/athienit/STA6166material/linthurst.txt",
+linthurst <- read.table("https://raw.github.com/athienit/STA6166material/master/linthurst.txt",
                         row.names=1,  # interpret column 1 as row names
                         skip=1,
                         col.names=c("obsnum","loc","type","biomass",
@@ -50,5 +50,5 @@ newdata=data.frame(pH=4.15,Na=10000)
 predict(linthurst.model.r, newdata, interval="prediction",level=0.95)
 
 # Next one should check the assumptions
-source("https://github.com/athienit/STA6166material/check.R")
+source("https://raw.github.com/athienit/STA6166material/master/check.R")
 check(linthurst.model.r,tests=TRUE)

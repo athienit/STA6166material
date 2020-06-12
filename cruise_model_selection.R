@@ -1,4 +1,4 @@
-cruise <- read.fwf("https://github.com/athienit/STA6166material/cruise_ship.dat", width=c(20,20,rep(8,7)),
+cruise <- read.fwf("https://raw.github.com/athienit/STA6166material/master/cruise_ship.dat", width=c(20,20,rep(8,7)),
                    col.names=c("ship", "cline", "age", "tonnage", "passengers", "length", "cabins", "passdens", "crew"))
 
 #attach(cruise)
@@ -15,7 +15,7 @@ anova(fit0)
 # (forward) adds one term at a time if the individual t-test pvalue<=alpha.enter
 # OR 
 # (both) performs forward until done and then checks existing model by permorming backwards
-source("https://github.com/athienit/STA6166material/stepT.R")
+source("https://raw.github.com/athienit/STA6166material/master/stepT.R")
 stepT(fit0,alpha.rem=0.2,direction="backward")
 stepT(fit0,alpha.enter=0.2,direction="forward")
 #stepT(fit0,alpha.rem=0.2,alpha.enter=0.2,direction="both")
