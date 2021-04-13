@@ -1,4 +1,4 @@
-capdat=read.table("http://www.stat.ufl.edu/~athienit/IntroStat/capsule.dat",
+capdat=read.table("https://raw.githubusercontent.com/athienit/STA6166material/master/capsule.dat",
 		col.names=c("subj", "formu", "tmax"))
 
 # Create qualitative factor variable for formu, and assign names to levels

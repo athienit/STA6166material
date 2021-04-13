@@ -26,7 +26,7 @@ plot(ex0603.Tukey, sub="Theophylline Data", adj=0)
 mtext("Tukey Honest Significant Differences",side=3,line=0.5)
 
 # Do Bonferoni using our own made function
-source("http://www.stat.ufl.edu/~athienit/Bonf.R")
+source("https://raw.githubusercontent.com/athienit/STA3032material/master/Bonf.R")
 Bonf(thcl~fintagnt+subj,data=ex0603,level=0.95)
 
 # Let's calculate the Relative Efficiency

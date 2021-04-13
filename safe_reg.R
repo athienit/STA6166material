@@ -1,4 +1,4 @@
-dat=read.csv("https://raw.github.com/athienit/STA6166material/master/safe_reg.CSV",header=TRUE)
+dat=read.csv("https://raw.githubusercontent.com/athienit/STA6166material/master/safe_reg.CSV",header=TRUE)
 attach(dat)
 
 library(car)

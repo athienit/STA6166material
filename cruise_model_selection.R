@@ -1,4 +1,4 @@
-cruise <- read.fwf("https://raw.github.com/athienit/STA6166material/master/cruise_ship.dat", width=c(20,20,rep(8,7)),
+cruise <- read.fwf("https://raw.githubusercontent.com/athienit/STA6166material/master/cruise_ship.dat", width=c(20,20,rep(8,7)),
                    col.names=c("ship", "cline", "age", "tonnage", "passengers", "length", "cabins", "passdens", "crew"))
 
 #attach(cruise)

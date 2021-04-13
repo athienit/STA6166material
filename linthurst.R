@@ -1,6 +1,6 @@
 #Linthurst Data: Spartina Biomass
 
-linthurst <- read.table("https://raw.github.com/athienit/STA6166material/master/linthurst.txt",
+linthurst <- read.table("https://raw.githubusercontent.com/athienit/STA6166material/master/linthurst.txt",
                         row.names=1,  # interpret column 1 as row names
                         skip=1,
                         col.names=c("obsnum","loc","type","biomass",
