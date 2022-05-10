@@ -30,3 +30,24 @@ points(frac,add=T)
 ggplot(data=data.frame(frac), aes(x=1, y=frac)) +
   geom_boxplot() +
   geom_jitter(width=0.25, alpha=0.5)
+
+####################
+#### ALL IN ONE ####
+####################
+library(ggdist)
+library(tidyquant)
+
+ggplot(data=data.frame(frac), aes(frac)) + 
+  ggdist::stat_halfeye(
+    #custom bandwidth
+    adjust=0.5,
+    #remove slab interval
+    .width=0,
+    point_colour=NA)+
+  geom_boxplot(width=0.12,alpha=0.5,postition="dodge2")+
+  ggdist::stat_dots(
+    dotsize=500,
+    position="dodge",
+    justification=0.15,
+    binwidth=0.01)+
+  labs(title="Raincloud plot", y="Density",x="Fracture stress")
