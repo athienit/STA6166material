@@ -5,10 +5,10 @@ qqnorm(lead,datax=TRUE,col=2)
 qqline(lead,datax=TRUE)
 # Note the axis, some programs flip the axis, hence reversing the interpretation.  To flip use datax=FALSE
 
-plot(density(lead,bw=13),col=2,lty=2,ylim=c(0,0.016),main="Smoothed Histogram",xlab="")
-plot(function(t)dnorm(t,mean(lead),sd(lead)),from=-50,to=250,add=TRUE)
-
-legend(150,0.015,c("Normal","Data"),col=1:2,lty=1:2,bg="gray90")
+hist(lead,freq=F,main="Histogram with density and normal pdf")
+lines(density(lead,bw=13),lty=2,lwd=2,col="red")
+plot(function(t)dnorm(t,mean(lead),sd(lead)),from=0,to=250,lwd=2,add=TRUE)
+legend("topright",c("Normal","Data"),col=1:2,lty=1:2,lwd=2,bg="gray90")
 
 ### fancier version using ggplot2
 ## QQ plot
