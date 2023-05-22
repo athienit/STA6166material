@@ -15,14 +15,21 @@ mean(frac)
 median(frac)
 
 # mode
-freq=table(frac) # find frequency of observations
-which(freq==max(freq))
+# used ChatGPT to make function to get mode
 
-getmode <- function(v){
-  uniqv <- unique(v)
-  uniqv[which.max(tabulate(match(v, uniqv)))]
+getmode <- function(data) {
+  # Count the frequency of each unique value
+  frequencies <- table(data)
+  # Find the maximum frequency
+  max_frequency <- max(frequencies)
+  # Extract the values with maximum frequency (mode)
+  mode <- as.numeric(names(frequencies[frequencies == max_frequency]))
+  # Create a data frame with the mode and its frequency
+  mode_data <- data.frame(Value = mode, Frequency = max_frequency)
+  
+  return(mode_data)
 }
-getmode(freq)
+getmode(frac)
 
 # 5% trimmed mean
 mean(frac, trim=0.05)
