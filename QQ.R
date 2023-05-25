@@ -14,9 +14,21 @@ legend("topright",c("Normal","Data"),col=1:2,lty=1:2,lwd=2,bg="gray90")
 ## QQ plot
 library(qqplotr)
 library(gridExtra)
+library(dplyr)
+
+
 
 smp=data.frame(norm=lead)
-gg <- ggplot(data = smp, mapping = aes(sample = norm)) +
+#lets standardize the data
+standardize <- function(data) {
+  mean_val <- mean(data)
+  sd_val <- sd(data)
+  standardized_data <- (data - mean_val) / sd_val
+  return(standardized_data)
+}
+
+smp.st=mutate(smp,norm.lead=standardize(norm))
+gg <- ggplot(data = smp.st, mapping = aes(sample = norm.lead)) +
   stat_qq_band() +
   stat_qq_line() +
   stat_qq_point() +
@@ -25,29 +37,24 @@ gg <- ggplot(data = smp, mapping = aes(sample = norm)) +
 gg
 
 # Histogram
-dat_hist=data.frame(value=lead)
-bw = 10 #binwidth
+dat_hist=data.frame(value=smp.st$norm.lead)
 n_obs = sum(!is.na(dat_hist$value))
 
 g <- ggplot(dat_hist, aes(value))  + 
-  geom_histogram(aes(y = ..density..), binwidth = bw, colour = "black") + 
-  stat_function(aes(color="Normal"),fun = dnorm, args = list(mean = mean(dat_hist$value), sd = sd(dat_hist$value)))+
+  geom_histogram(aes(y = ..density..), colour = "black") + 
+  stat_function(aes(color="Normal"),fun = dnorm, args = list(mean = 0, sd = 1))+
   geom_density(aes(color="Density"),alpha=0.2)+
-  scale_colour_manual("Legend title", values = c("black","red"))
+  scale_colour_manual("Legend", values = c("black","red"))+
+  labs(
+    title = "Histogram of Standadrized Values",
+    x = "Standardized values",
+    y = "Density"
+  )
+g
 
-# And then rescale the y axis.
-ybreaks = seq(0,50,2) 
-## On primary axis
-opa=g + scale_y_continuous("Counts", breaks = round(ybreaks / (bw * n_obs),3), labels = ybreaks)
+grid.arrange(gg, g, ncol=2,nrow=1,top="Assesing normality of data")
 
-## Or on secondary axis
-opa=g + scale_y_continuous("Density", sec.axis = sec_axis(
-  trans = ~ . * bw * n_obs, name = "Counts", breaks = ybreaks))
-opa
-
-grid.arrange(gg, opa, ncol=2,nrow=1,top="Assesing normality of data")
-
-### Some frequentist tests
+### Some frequentist tests, p-values > 0.05 indicate assumption of normality holds
 shapiro.test(lead)
 ks.test(x=lead,y=pnorm)
 
