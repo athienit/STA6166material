@@ -1,4 +1,3 @@
-
 alpha=0.05
 ns=50 #number of samples
 n=100 #sample size of each sample
@@ -13,15 +12,14 @@ for(i in 1:ns){
 
 # CLT illustration
 xtemp=CIs[,1]
-h <- hist(xtemp, col="red", xlab="Sample", main="Histogram of sample means with Normal Curve", xlim=range(c(xtemp, xfit))) 
-
 xfit <- seq(floor(min(xtemp)), ceiling(max(xtemp)), length=40) 
+h <- hist(xtemp, col="red", xlab="Sample", main="Histogram of sample means with Normal Curve", xlim=range(c(xtemp, xfit))) 
 yfit <- dnorm(xfit, mean=mean(xtemp), sd=sd(xtemp)) 
 yfit <- yfit * diff(h$mids[1:2]) * length(xtemp) 
 
 # Setting y-axis limits to fit both the histogram and the normal curve
 ylim_max <- max(c(h$counts, yfit))
-plot(h, ylim=c(0, ylim_max))
+plot(h, col="red",ylim=c(0, ylim_max))
 
 lines(xfit, yfit, col="blue", lwd=2)
 
